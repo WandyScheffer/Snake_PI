@@ -14,6 +14,7 @@ window.onload = function () {//quando carregar a janela
     var score = 0;
     var nivel_jogo = 100;
     var level = 1;
+    
     //---------------------------------------------------------------
 
     document.addEventListener("keydown", keyPush)//sempre q uma tecla for pressionada chama a função keyPush
@@ -121,9 +122,13 @@ window.onload = function () {//quando carregar a janela
             //---------------------------------------------------
             score += 1;
             
-            if (score+nivel_jogo==95) {
+            if (score%7 == 0) {
                 level++;
-                nivel_jogo -= 5;
+                
+                if (nivel_jogo>40) {
+                    nivel_jogo -= 20;
+                }
+                
                 
                 clearInterval(execucao);
                 execucao = setInterval(jogo, nivel_jogo);
@@ -134,9 +139,6 @@ window.onload = function () {//quando carregar a janela
     }
 
     function keyPush(event){//movimentação
-
-
-
         
         /* 
         w => keycode:87
@@ -196,6 +198,59 @@ window.onload = function () {//quando carregar a janela
                     }
                 }, 130);
                 break;
+
+            //para setas
+            case 38://up
+                setTimeout(() => {
+                    if (vy != 0) {
+                        vy = vy;
+                        vx = 0
+                    } else {
+                        vy = -velocidade;
+                        vx = 0;
+                    }
+                }, 100);
+                break;
+
+            case 37://left
+                setTimeout(() => {
+
+                    if (vx != 0) {
+                        vx = vx;
+                        vy = 0
+                    } else {
+                        vx = -velocidade;
+                        vy = 0;
+                    }
+                }, 110);
+                break;
+
+            case 40://down
+                setTimeout(() => {
+
+                    if (vy != 0) {
+                        vy = vy;
+                        vx = 0
+                    } else {
+                        vy = velocidade;
+                        vx = 0;
+                    }
+                }, 120);
+                break;
+
+            case 39://right
+                setTimeout(() => {
+
+                    if (vx != 0) {
+                        vx = vx;
+                        vy = 0
+                    } else {
+                        vx = velocidade;
+                        vy = 0;
+                    }
+                }, 130);
+                break;
+
         
             default:
                 break;
