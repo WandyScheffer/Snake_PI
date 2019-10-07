@@ -22,7 +22,7 @@ window.onload = function () {//quando carregar a janela
     chama uma função em um intervalo de tempo de ms
     neste caso a função 'jogo'
     */
-    var execucao = setInterval(jogo, nivel_jogo);//-------------------------------------------------------------
+    var execucao = setInterval(jogo, 100);//-------------------------------------------------------------
 
 
     // velocidade, se referindo ao numero de quadrados q mudarão ao atualizar o setinterval
@@ -43,6 +43,7 @@ window.onload = function () {//quando carregar a janela
 
         html_score.innerText='Score: '.concat(score);
         html_level.innerText='Level: '.concat(level);
+
         // atualizando o posicionamento da snake
         px += vx;
         py += vy;
@@ -120,7 +121,7 @@ window.onload = function () {//quando carregar a janela
             //---------------------------------------------------
             score += 1;
             
-            if (score+nivel_jogo==105) {
+            if (score+nivel_jogo==95) {
                 level++;
                 nivel_jogo -= 5;
                 
@@ -133,56 +134,73 @@ window.onload = function () {//quando carregar a janela
     }
 
     function keyPush(event){//movimentação
+
+
+
+        
         /* 
         w => keycode:87
         a => keycode:65
         s => keycode:83
         d => keycode:68
         */
+        
         switch (event.keyCode) {
             case 87://up
-                if (vy!=0) {
-                    vy=vy;
-                    vx=0
-                }else{
-                    vy = -velocidade;
-                    vx = 0;
-                }
+                setTimeout(() => {
+                    if (vy!=0) {
+                        vy=vy;
+                        vx=0
+                    }else{
+                        vy = -velocidade;
+                        vx = 0;
+                    }
+                }, 100);
                 break;
 
             case 65://left
-                if (vx != 0) {
-                    vx = vx;
-                    vy = 0
-                }else{
-                    vx = -velocidade;
-                    vy = 0;
-                }
+                setTimeout(() => {
+                    
+                    if (vx != 0) {
+                        vx = vx;
+                        vy = 0
+                    }else{
+                        vx = -velocidade;
+                        vy = 0;
+                    }
+                }, 110);
                 break;
 
             case 83://down
-                if (vy != 0) {
-                    vy = vy;
-                    vx = 0
-                }else{
-                    vy = velocidade;
-                    vx = 0;
-                }
+                setTimeout(() => {
+
+                    if (vy != 0) {
+                        vy = vy;
+                        vx = 0
+                    }else{
+                        vy = velocidade;
+                        vx = 0;
+                    }
+                }, 120);
                 break;
 
             case 68://right
-                if (vx != 0) {
-                    vx = vx;
-                    vy = 0
-                }else{
-                    vx = velocidade;
-                    vy = 0;
-                }
+                setTimeout(() => {
+
+                    if (vx != 0) {
+                        vx = vx;
+                        vy = 0
+                    }else{
+                        vx = velocidade;
+                        vy = 0;
+                    }
+                }, 130);
                 break;
         
             default:
                 break;
         }
+
     }
 
 }
